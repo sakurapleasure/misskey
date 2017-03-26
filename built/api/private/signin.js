@@ -1,0 +1,65 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const bcrypt = require("bcryptjs");
+const user_1 = require("../models/user");
+const signin_1 = require("../models/signin");
+const signin_2 = require("../serializers/signin");
+const event_1 = require("../event");
+const conf_1 = require("../../conf");
+exports.default = async (req, res) => {
+    res.header('Access-Control-Allow-Credentials', 'true');
+    const username = req.body['username'];
+    const password = req.body['password'];
+    if (typeof username != 'string') {
+        res.sendStatus(400);
+        return;
+    }
+    if (typeof password != 'string') {
+        res.sendStatus(400);
+        return;
+    }
+    // Fetch user
+    const user = await user_1.default.findOne({
+        username_lower: username.toLowerCase()
+    }, {
+        fields: {
+            data: false,
+            profile: false
+        }
+    });
+    if (user === null) {
+        res.status(404).send({
+            error: 'user not found'
+        });
+        return;
+    }
+    // Compare password
+    const same = bcrypt.compareSync(password, user.password);
+    if (same) {
+        const expires = 1000 * 60 * 60 * 24 * 365; // One Year
+        res.cookie('i', user.token, {
+            path: '/',
+            domain: `.${conf_1.default.host}`,
+            secure: conf_1.default.url.substr(0, 5) === 'https',
+            httpOnly: false,
+            expires: new Date(Date.now() + expires),
+            maxAge: expires
+        });
+        res.sendStatus(204);
+    }
+    else {
+        res.status(400).send({
+            error: 'incorrect password'
+        });
+    }
+    // Append signin history
+    const record = await signin_1.default.insert({
+        created_at: new Date(),
+        user_id: user._id,
+        ip: req.ip,
+        headers: req.headers,
+        success: same
+    });
+    // Publish signin event
+    event_1.default(user._id, 'signin', await signin_2.default(record));
+};

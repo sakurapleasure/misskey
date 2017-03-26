@@ -1,9 +1,0 @@
-/.config
-/.vscode
-/node_modules
-/built
-/uploads
-npm-debug.log
-*.pem
-run.bat
-api-docs.json

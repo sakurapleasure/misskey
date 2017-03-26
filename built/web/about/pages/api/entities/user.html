@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="ja" dir="ltr"><head><meta charset="utf-8"><meta name="application-name" content="Misskey"><meta name="theme-color" content="#87bb35"><meta name="referrer" content="origin"><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="/assets/style.css"><title>Entity: User | About Misskey</title></head><body><nav><ul><li><a href="/link-to-twitter">Twitterと連携する</a></li><li><p>API</p><ul><li><a href="/api/getting-started">Getting Started</a></li><li><p>Entities</p><ul><li><a href="/api/entities/post">Post</a></li><li><a href="/api/entities/user">User</a></li></ul></li><li><a href="/api/library">ライブラリ</a></li></ul></li><li><a href="/tou">利用規約</a></li><li><a href="/privacy">プライバシー</a></li><li><a href="/license">ライセンス</a></li></ul></nav><main><article><h1>User</h1><p>ユーザーを表します。</p><section><h2>Properties</h2><table class="entity"><thead><tr><td>Name</td><td>Type</td><td>Description</td></tr></thead><tbody><tr class="nullable optional"><td>avatar_id</td><td>ID</td><td>アバターに設定しているドライブのファイルのID</td></tr><tr class="nullable"><td>avatar_url</td><td>String</td><td>アバターURL</td></tr><tr class="nullable optional"><td>banner_id</td><td>ID</td><td>バナーに設定しているドライブのファイルのID</td></tr><tr class="nullable"><td>banner_url</td><td>String</td><td>バナーURL</td></tr><tr class="nullable"><td>bio</td><td>String</td><td>プロフィール</td></tr><tr class="nullable"><td>birthday</td><td>String</td><td>誕生日(YYYY-MM-DD)</td></tr><tr><td>created_at</td><td>Date</td><td>アカウント作成日時</td></tr><tr class="optional"><td>drive_capacity</td><td>Number</td><td>ドライブの最大容量(byte単位)</td></tr><tr><td>followers_count</td><td>Number</td><td>フォロワー数</td></tr><tr><td>following_count</td><td>Number</td><td>フォロー数</td></tr><tr><td>id</td><td>ID</td><td>ユーザーID</td></tr><tr class="optional"><td>is_bot</td><td>Boolean</td><td>botかどうか</td></tr><tr class="optional"><td>is_followed</td><td>Boolean</td><td>フォローされているか</td></tr><tr class="optional"><td>is_following</td><td>Boolean</td><td>フォローしているか</td></tr><tr><td>liked_count</td><td>Number</td><td>投稿にいいねされた数</td></tr><tr><td>likes_count</td><td>Number</td><td>投稿にいいねした数</td></tr><tr class="nullable"><td>location</td><td>String</td><td>住処</td></tr><tr><td>name</td><td>String</td><td>ニックネーム</td></tr><tr><td>posts_count</td><td>Number</td><td>投稿数</td></tr><tr><td>username</td><td>String</td><td>ユーザー名</td></tr></tbody></table></section><section><h2>Example</h2><pre><code>{
+	"avatar_id": "583ddc6e64df272771f74c1a",
+	"avatar_url": "https://file.himasaku.net/583ddc6e64df272771f74c1a",
+	"banner_id": "584bfc82d8e5186f8f755ec5",
+	"banner_url": "https://file.himasaku.net/584bfc82d8e5186f8f755ec5",
+	"bio": "どうすれば君だけのために生きていけるの",
+	"birthday": "1997-12-06",
+	"created_at": "2016-09-07T13:46:56.605Z",
+	"drive_capacity": 1073741824,
+	"email": null,
+	"followers_count": 51,
+	"following_count": 97,
+	"id": "57d01a501fdf2d07be417afe",
+	"liked_count": 750,
+	"likes_count": 3130,
+	"links": null,
+	"location": "川崎",
+	"name": "きな子",
+	"posts_count": 4811,
+	"username": "syuilo"
+}</code></pre></section></article><footer><p class="contribution">間違いを見つけた、またはドキュメントに貢献したいですか？<a href="https://github.com/syuilo/misskey/blob/master/docs/api/entities/user.pug" target="_blank">Github 上でこのページを編集する</a> か、<a href="https://github.com/syuilo/misskey/fork" target="_blank">Github からこのサイトを Fork してプルリクエストしましょう！</a></p><p class="copyright">(c) syuilo 2017</p></footer></main></body></html>
